@@ -8,7 +8,7 @@ class PokeItem extends Component {
         return ( 
 
             <p>
-                <img src={url} id={_id} alt={pokemon} />
+                <img src={url} id={_id} alt={pokemon}  width='200px'/>
             </p>
 
          );
