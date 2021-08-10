@@ -11,8 +11,9 @@ class PokeList extends Component {
         <div className='pokemon-list'>
             <ul>
                 {pokemon_array.map((pokemon_object) => {
-                    const {url_image, _id, id, pokemon} = pokemon_object;
-                    return  <PokeItem url={url_image} pokemon={pokemon} id={_id} key={id} />
+                    const {url_image, _id, id, pokemon, ability_1} = pokemon_object;
+                    return  <PokeItem url={url_image} pokemon={pokemon} _id={_id} key={id} ability={ability_1} /> 
+                    
                 })}
             </ul>
         </div>

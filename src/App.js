@@ -1,42 +1,32 @@
 import React, { Component } from 'react';
 import './App.css';
-import PokeList from './PokeList.js';
-import testData from './data/testData.js';
+import Header from './Header.js';
+import Home from './Home.js';
+import Pokemon from './Pokemon.js';
+import PokemonDetails from './PokemonDetails.js';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class App  extends Component {
 
-   state = { 
-      data:null,
-      isLoaded:false            
-    }
-
-  async componentDidMount(){
-    //make url a state
-    const url = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
-    const response= await fetch(url);
-    const data = await response.json();
-    this.setState({data: data.results});
-    this.setState({isLoaded:true});
-  }
-
   render() { 
-    if(!this.state.isLoaded){
-      return <p> Error</p>
 
-    }
+   
 
-    else{
+    
     return ( 
- 
-      <div className='myApp' >
-
-        <PokeList pokemon_array = {this.state.data}/>
-
-      </div>
-
+      <section className='app'>
+          <BrowserRouter>
+            <Header />
+              <Switch>
+                <Route path='/pokemon-details' component={PokemonDetails} />
+                <Route path='/pokemon' component={Pokemon} />
+                <Route path='/' component={Home} />
+              </Switch>
+          </BrowserRouter>
+      </section>
      );
     }
-  }
+  
 }
  
 export default App;
